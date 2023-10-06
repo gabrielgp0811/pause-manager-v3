@@ -1,0 +1,206 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://pause-manager-v3/examples/scripts/example_scene.gd" type="Script" id=1]
+[ext_resource path="res://pause-manager-v3/prefabs/pause_manager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://pause-manager-v3/examples/scripts/rotation.gd" type="Script" id=3]
+[ext_resource path="res://pause-manager-v3/prefabs/pause_event_handler.tscn" type="PackedScene" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[node name="Example Scene" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="PauseManager" parent="." instance=ExtResource( 2 )]
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 128.0
+text = "PAUSE MANAGER"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PausedLabel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = 76.0
+margin_right = 22.0
+margin_bottom = 90.0
+text = "Paused"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Panel" parent="."]
+margin_left = 192.0
+margin_top = 192.0
+margin_right = 320.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="Panel" parent="." groups=[
+"pausable",
+]]
+margin_left = 448.0
+margin_top = 192.0
+margin_right = 576.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Panel" parent="."]
+margin_left = 704.0
+margin_top = 192.0
+margin_right = 832.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseEventHandler" parent="Right" instance=ExtResource( 4 )]
+
+[node name="InfoLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -216.0
+margin_right = 384.0
+margin_bottom = -1.0
+text = "Press 'Escape' key to Pause/Resume
+
+The 'Center' box is in a group called 'pausable'.
+
+The 'Right' box is handled by 'PauseEventHandler' node.
+
+When Pause Tree is 'false', only nodes in 'pausable' group, when Pause Groups is 'true', and nodes handled by 'PauseEventHandler', when Use Event Handlers is 'true', are affected."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseTreeLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -152.0
+margin_right = 40.0
+margin_bottom = -128.0
+text = "Pause Tree:"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseTreeCheckBox" type="CheckBox" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -152.0
+margin_right = 64.0
+margin_bottom = -128.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseGroupsLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -56.0
+margin_top = -128.0
+margin_right = 40.0
+margin_bottom = -104.0
+text = "Pause Groups:"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseGroupsCheckBox" type="CheckBox" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -128.0
+margin_right = 64.0
+margin_bottom = -104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseEventHandlersLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -88.0
+margin_top = -104.0
+margin_right = 41.0
+margin_bottom = -80.0
+text = "Use Event Handlers:"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseEventHandlersCheckBox" type="CheckBox" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -104.0
+margin_right = 64.0
+margin_bottom = -80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Change Scene Button" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -256.0
+margin_top = -152.0
+margin_right = -124.0
+margin_bottom = -88.0
+text = "Pause Menu Scene"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="toggle" from="PauseManager" to="." method="_on_PauseManager_toggle"]
+[connection signal="toggle" from="Right/PauseEventHandler" to="Right" method="_on_PauseEventHandler_toggle"]
+[connection signal="toggled" from="PauseTreeCheckBox" to="." method="_on_PauseTreeCheckBox_toggled"]
+[connection signal="toggled" from="PauseGroupsCheckBox" to="." method="_on_PauseGroupsCheckBox_toggled"]
+[connection signal="toggled" from="PauseEventHandlersCheckBox" to="." method="_on_PauseEventHandlersCheckBox_toggled"]
+[connection signal="pressed" from="Change Scene Button" to="." method="_on_Change_Scene_Button_pressed"]
