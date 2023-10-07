@@ -13,7 +13,7 @@ signal pause
 signal resume
 
 # CONSTANTS
-const VERSION = "1.0.0"
+const VERSION = "1.1.0"
 
 # EXPORTED VARIABLES
 
@@ -67,8 +67,6 @@ func _notification(what):
 		pause()
 
 func toggle_pause() -> void:
-	emit_signal("toggle", not is_paused())
-
 	if not is_paused():
 		pause()
 	else:
@@ -80,6 +78,7 @@ func pause() -> void:
 	
 	set_paused(true)
 	
+	emit_signal("toggle", true)
 	emit_signal("pause")
 	
 	if pause_tree:
@@ -98,6 +97,7 @@ func resume() -> void:
 	
 	set_paused(false)
 	
+	emit_signal("toggle", false)
 	emit_signal("resume")
 	
 	get_tree().paused = false
