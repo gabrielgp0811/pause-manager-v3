@@ -13,7 +13,7 @@ signal pause
 signal resume
 
 # CONSTANTS
-const VERSION = "1.1.0"
+const VERSION = "1.2.0"
 
 # EXPORTED VARIABLES
 
@@ -36,8 +36,8 @@ export (bool) var use_event_handlers = true
 export (bool) var use_input_map= true
 
 ## Action names from Input Map (Project -> Project Settings -> Input Map).
-## By default, there's only one action with the name 'pause'.
-export (Array, String) var action_names = ["pause"]
+## By default, there's only one action with the name 'ui_cancel'.
+export (Array, String) var action_names = ["ui_cancel"]
 
 ## Array of keys, when Input Map is not needed.
 ## By default, there's only the 'Escape' key from keyboard.
